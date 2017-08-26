@@ -1,19 +1,14 @@
 {
-	"name"         : "mean-skeleton",
-	"version"      : "0.4.1",
-	"description"  : "Skeleton for an application using the MEAN stack.",
+	"name"         : "angular-note",
+	"version"      : "0.0.1",
+	"description"  : "Simple note app in angularjs and nodejs",
 	"main"         : "server.js",
-	"author"       : "Alfred",
+	"author"       : "Poorvi",
 	"dependencies" : {
 		"express"    : "latest",
 		"body-parser": "latest",
 		"morgan"		 : "latest",
 		"mongoose"	 : "latest",
 		"request"	 : "latest"
-	},
-	"repository"   :
-		{
-			"type" : "git",
-			"url" : "https://github.com/alfredababio/mean-skeleton.git"
-		}
+	}
 }
