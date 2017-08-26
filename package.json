@@ -1,18 +1,19 @@
 {
-  "name": "angular-notes",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "start": "node ./bin/www"
-  },
-  "dependencies": {
-    "body-parser": "~1.17.1",
-    "cookie-parser": "~1.4.3",
-    "debug": "~2.6.3",
-    "express": "~4.15.2",
-    "jade": "~1.11.0",
-    "morgan": "~1.8.1",
-    "serve-favicon": "~2.4.2",
-    "stylus": "0.54.5"
-  }
+	"name"         : "mean-skeleton",
+	"version"      : "0.4.1",
+	"description"  : "Skeleton for an application using the MEAN stack.",
+	"main"         : "server.js",
+	"author"       : "Alfred",
+	"dependencies" : {
+		"express"    : "latest",
+		"body-parser": "latest",
+		"morgan"		 : "latest",
+		"mongoose"	 : "latest",
+		"request"	 : "latest"
+	},
+	"repository"   :
+		{
+			"type" : "git",
+			"url" : "https://github.com/alfredababio/mean-skeleton.git"
+		}
 }
