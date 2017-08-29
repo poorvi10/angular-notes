@@ -43,4 +43,28 @@ module.exports = function(app) {
 			});
 		});
 	});
+	// Example POST route
+	app.post('/users', function (req, res) {
+		Model.create({
+			email : req.body.email, // Bound using Angular
+			password : req.body.password
+		}, function(err, model) {
+			if(err) {
+				res.send(err);
+			}
+
+			Model.find(function(err, users) {
+				res.send(users);
+			});
+		});
+	});
+		app.get('/users', function(req, res) {
+
+		// Checks the model collection and returns all of them`
+		Model.find(function(err, users) {
+
+			// returns all people in JSON format
+			res.send(users);
+		});
+	});
 }

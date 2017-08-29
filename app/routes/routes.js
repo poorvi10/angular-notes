@@ -15,6 +15,11 @@ module.exports = function(app) {
 		// Must always end the Writeable stream 
 		res.end();
 	});
+    
+    app.get('/login', function(req, res) {
+		// Displaying an already made view
+		res.sendfile('public/views/login.html');
+	});
 
 	// Wildcard route serving static html page
 	app.get('*', function(req, res) {

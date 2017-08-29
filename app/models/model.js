@@ -6,10 +6,20 @@ Schema = mongoose.Schema;
 
 
 // Model Schema
+//var ModelSchema = new Schema ({
+//	name : {
+//		type: String
+//	},
+//});
+
+// Model Schema
 var ModelSchema = new Schema ({
-	name : {
+	email : {
 		type: String
 	},
+	password : {
+		type: String
+	}
 });
-
 module.exports = mongoose.model('Model', ModelSchema);
+//module.exports = mongoose.model('Model', ModelSchema);

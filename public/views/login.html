@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="login">
+<head>
+	<title>Login Page</title>
+
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/styles.css">
+
+	<!--  Angular from Google CDN -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+	<!-- Load AppController -->
+	<script type="text/javascript" src="../controllers/login.js"></script>
+</head>
+<body ng-controller="loginCtrl">
+	<div class="container">
+
+		<!-- FORM TO CREATE USERS -->
+		<div id="model-form" class="form-horizontal">
+			<div class="col-sm-8 col-sm-offset-2 text-center" id="name-field">
+				
+				<!-- Only posts to Angular's createModel if form is valid and was submitted -->
+				<form name="modelCreate" ng-submit="modelCreate.$valid && submitted && createUser()" novalidate>
+					<div class="form-group">
+						
+						<!-- BIND THIS VALUE TO formData.name -->
+						<div class="col-sm-12">
+							<input type="email" name="email"  class="form-control input-lg text-center" placeholder="Email" ng-model="formData.email" required />
+
+                            <input type="password" name="password"  class="form-control input-lg text-center" placeholder="Password" ng-model="formData.password" required />
+
+						</div>
+					</div>
+
+					<!-- Sets the value submitted to true to help with form validation -->
+					<button type="submit" class="btn btn-primary btn-lg" ng-click="submitted=true" ng-disabled="modelCreate.password.$dirty && modelCreate.password.$invalid ||  
+modelCreate.email.$dirty && modelCreate.email.$invalid">
+						Register
+					</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
