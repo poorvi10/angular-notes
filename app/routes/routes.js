@@ -21,6 +21,11 @@ module.exports = function(app) {
 		res.sendfile('public/views/login.html');
 	});
 
+	app.get('/signup', function(req, res) {
+		// Displaying an already made view
+		res.sendfile('public/views/signup.html');
+	});
+
 	// Wildcard route serving static html page
 	app.get('*', function(req, res) {
 		// Displaying an already made view

@@ -10,10 +10,16 @@ Schema = mongoose.Schema;
 //	name : {
 //		type: String
 //	},
-//});
+//});+
 
 // Model Schema
 var ModelSchema = new Schema ({
+	firstname : {
+        type: String
+	},
+	lastname : {
+        type: String
+	},
 	email : {
 		type: String
 	},
