@@ -28,7 +28,8 @@ app.use(bodyParser.urlencoded({
 }));
 
 // Express Routes
-require('./app/routes/api')(app);
+require('./app/routes/login')(app);
+require('./app/routes/register')(app);
 require('./app/routes/routes')(app);
 
 // Start the app with listen and a port number

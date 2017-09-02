@@ -15,20 +15,23 @@ module.exports = function(app) {
 		// Must always end the Writeable stream 
 		res.end();
 	});
-    
-    app.get('/login', function(req, res) {
+
+	app.get('/login', function(req, res) {
 		// Displaying an already made view
 		res.sendfile('public/views/login.html');
 	});
 
-	app.get('/signup', function(req, res) {
+	app.get('/register', function(req, res) {
 		// Displaying an already made view
-		res.sendfile('public/views/signup.html');
+		res.sendfile('public/views/register.html');
 	});
-
+	
 	// Wildcard route serving static html page
 	app.get('*', function(req, res) {
 		// Displaying an already made view
-		res.sendfile('public/views/index.html');
+		res.sendfile('public/views/login.html');
 	});
+
+
+
 }
