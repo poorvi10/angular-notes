@@ -6,20 +6,16 @@ module.exports = function(app) {
     /* Register the user */
 	app.post('/register', function (req, res) {
 		Model.create({
-			firstname: req.body.firstname,
-			lastname: req.body.lastname,
-			email : req.body.email, // Bound using Angular
-			password : req.body.password,
-
-		    },  
+				firstname: req.body.firstname,
+				lastname: req.body.lastname,
+				email : req.body.email, // Bound using Angular
+				password : req.body.password,
+            },
 		    function(err, model) {
 				if(err) {
 					res.send("Please try again!");
 				}
-
-				Model.find(function(err, users) {
-					res.send("You are Registered!");
-				});
+				res.send("You are Registered!");
 	        }
 		);
 	});
