@@ -1,7 +1,7 @@
 // Module for API Routes (serving JSON)
 module.exports = function(app) {
 	var mongoose = require('mongoose'),
-		Model = require('../models/model')
+		Model = require('../models/user')
 
 	// Example API route
 	app.get('/models', function(req, res) {
@@ -44,7 +44,7 @@ module.exports = function(app) {
 		});
 	});
 	// Example POST route
-	app.get('/login', function (req, res) {
+	app.get('/users', function (req, res) {
 		var isExists = con.find({
 			email : req.body.email // Bound using Angular
 		});
@@ -72,30 +72,6 @@ module.exports = function(app) {
 			Model.find(function(err, users) {
 				res.send("You are Registered!");
 			});
-		});
-	});
-	// Example POST route
-	app.post('/users', function (req, res) {
-		Model.create({
-			email : req.body.email, // Bound using Angular
-			password : req.body.password
-		}, function(err, model) {
-			if(err) {
-				res.send("Please try again!");
-			}
-
-			Model.find(function(err, users) {
-				res.send("You are Registered!");
-			});
-		});
-	});
-	app.get('/users', function(req, res) {
-
-		// Checks the model collection and returns all of them`
-		Model.find(function(err, users) {
-
-			// returns all people in JSON format
-			res.send(users);
 		});
 	});
 }
