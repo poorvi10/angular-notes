@@ -1,14 +1,14 @@
 {
-	"name"         : "angular-note",
-	"version"      : "0.0.1",
-	"description"  : "Simple note app in angularjs and nodejs",
-	"main"         : "server.js",
-	"author"       : "Poorvi",
-	"dependencies" : {
-		"express"    : "latest",
+	"name": "angular-note",
+	"version": "0.0.1",
+	"description": "Simple note app in angularjs and nodejs",
+	"main": "server.js",
+	"author": "Poorvi",
+	"dependencies": {
+		"express": "latest",
 		"body-parser": "latest",
-		"morgan"		 : "latest",
-		"mongoose"	 : "latest",
-		"request"	 : "latest"
+		"morgan": "latest",
+		"mongoose": "latest",
+		"request": "latest"
 	}
 }

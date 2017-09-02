@@ -33,3 +33,4 @@ require('./app/routes/routes')(app);
 
 // Start the app with listen and a port number
 app.listen(3000);
+console.log("Express server running at http://localhost:3000");
