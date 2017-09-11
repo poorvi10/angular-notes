@@ -11,32 +11,47 @@
 	<!-- Load AppController -->
 	<script type="text/javascript" src="../controllers/login-controller.js"></script>
 </head>
-<body ng-controller="loginCtrl">
+<body ng-controller="loginCtrl" data-ng-init="init()">
 	<div class="container">
+	   <div class="login-header col-md-8">
+	   	  <p>Get started with web notes</p>
+	   </div>
 
 		<!-- FORM TO CREATE USERS -->
-		<div id="model-form" class="form-horizontal col-sm-5 text-center">
-				<p ng-show="isCheck" style="color:red;padding:5px;">{{ message }}</p>
-				<!-- Only posts to Angular's createModel if form is valid and was submitted -->
-				<form name="modelCreate" class="login-form" ng-submit="modelCreate.$valid && submitted && createUser()" novalidate>
-					<div class="form-group">
-						<!-- BIND THIS VALUE TO formData.name -->
-						<div class="col-sm-12">
-						    <p>
-							<input type="email" name="email"  class="form-control text-center" placeholder="Email" ng-model="formData.email" required />
-							</p>
-							<p>
-                            <input type="password" name="password"  class="form-control text-center" placeholder="Password" ng-model="formData.password" required />
-                            </p>
+		<div id="model-form" class="form-horizontal text-center">
+			<div class="row">
+			    <div class="col-md-12">
+					<p ng-show="isCheck" style="color:red;padding:5px;">{{ message }}</p>
+				</div>
+				<div class="col-md-12">
+					<!-- Only posts to Angular's createModel if form is valid and was submitted -->
+					<form name="modelCreate" class="login-form" ng-submit="modelCreate.$valid && submitted && createUser()" novalidate>
+						<div class="form-group">
+							<!-- BIND THIS VALUE TO formData.name -->
+							<div class="col-sm-12">
+							    <p>
+								<input type="email" name="email"  class="form-control text-center" placeholder="Email" ng-model="formData.email" required />
+								</p>
+								<p>
+	                            <input type="password" name="password"  class="form-control text-center" placeholder="Password" ng-model="formData.password" required />
+	                            </p>
+							</div>
 						</div>
-					</div>
-					
-					<!-- Sets the value submitted to true to help with form validation -->
-					<button type="submit" class="btn btn-lg login-button" ng-click="submitted=true" ng-disabled="modelCreate.password && modelCreate.password.$dirty && modelCreate.password.$invalid ||  
-modelCreate.email.$dirty && modelCreate.email.$invalid && modelCreate.email">
-						Login
-					</button>
-				</form>
+						
+						<!-- Sets the value submitted to true to help with form validation -->
+						<button type="submit" class="btn btn-lg login-button col-sm-6" ng-click="submitted=true" ng-disabled="modelCreate.password && modelCreate.password.$dirty && modelCreate.password.$invalid ||  
+	modelCreate.email.$dirty && modelCreate.email.$invalid && modelCreate.email">
+							Login
+						</button>
+						<label class="col-sm-6 remember-me">
+							<input data-ng-click="rememberMe()" data-ng-model="remember" name="remember" type="checkbox">   Remember Me
+						</label>
+					</form>
+				</div>
+			</div>
+			<div class="row" id="signUpLink">
+				<a id="link-3" ng-href="/register" class="col-md-12">Sign up now</a><br />
+			</div>
 		</div>
 	</div>
 </body>

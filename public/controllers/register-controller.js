@@ -11,8 +11,10 @@ register.controller('signupCtrl', function signupCtrl($scope, $http, $timeout) {
 				$scope.message = data;
 			})
 			.error(function(data) {
+				$scope.formData = {};
 				$scope.message = data;
 			});
+		$scope.formData = {};
         $timeout(function() { $scope.isCheck = true; }, 10);
 	};
 })
