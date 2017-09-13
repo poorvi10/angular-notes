@@ -17,8 +17,12 @@ login.controller('loginCtrl', function loginCtrl($scope, $http, $timeout, $locat
 		$http.post('/login', $scope.formData)
 			.success(function(data) {
 				$scope.formData = {};
-				$scope.message = data;
-				//$window.location.href = '/dashboard';
+				if (data.status == 200) {
+					$window.location.href = '/dashboard';
+				} else if(data.status == 500) {
+					$scope.message = data.msg;
+				}
+				
 			})
 			.error(function(data) {
 				$scope.formData = {};
