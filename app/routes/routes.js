@@ -25,6 +25,12 @@ module.exports = function(app) {
 		// Displaying an already made view
 		res.sendfile('public/views/register.html');
 	});
+
+	app.get('/dashboard', function(req, res) {
+		// Displaying an already made view
+		res.sendfile('public/views/dashboard.html');
+	});
+
 	
 	// Wildcard route serving static html page
 	app.get('*', function(req, res) {
