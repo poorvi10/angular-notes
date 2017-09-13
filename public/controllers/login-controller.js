@@ -9,7 +9,7 @@ login.config(function($routeProvider){
 })
 
 // Defining wrapper Routes for our API
-login.controller('loginCtrl', function loginCtrl($scope, $http, $timeout, $location, $rootScope, $window) {
+login.controller('loginCtrl', function loginCtrl($scope, $http, $timeout, $location, $window) {
 	$scope.formData = {};
 	
     $scope.createUser = function() {
@@ -18,9 +18,7 @@ login.controller('loginCtrl', function loginCtrl($scope, $http, $timeout, $locat
 			.success(function(data) {
 				$scope.formData = {};
 				$scope.message = data;
-				//$location.path('/dashboard');
-				//$rootScope.$apply();
-				$window.location.href = '/dashboard';
+				//$window.location.href = '/dashboard';
 			})
 			.error(function(data) {
 				$scope.formData = {};
