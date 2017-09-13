@@ -10,8 +10,8 @@ module.exports = function(app) {
 		}, function (err, users) {
 			if (users.length != 0) {
 				if (users[0].password == req.body.password) {
-
-					res.send({"status": 200,"msg":"logged In"});
+					console.log(users[0]);
+					res.send({"status": 200,"msg":"logged In", "firstname": users[0].firstname, "lastname": users[0].lastname});
 				} else {
 					res.send({"status": 500,"msg":"Enter correct password"});
 				}
