@@ -8,5 +8,6 @@ login.controller('dashboardCtrl', function dashboardCtrl($scope, $window, $local
     
     $scope.logout = function() {
     	$sessionStorage.reset();
+    	$window.location.href = '/login';
     }
 });
