@@ -13,6 +13,7 @@ login.controller('loginCtrl', function loginCtrl($scope, $http, $timeout, $locat
 				if (data.status == 200) {
 					var name = data.firstname + " " + data.lastname;
 					$sessionStorage.SessionMessage = name;
+					//$sessionStorage.put('name', name);
 					$window.location.href = '/dashboard';
 				} else if(data.status == 500) {
 					$scope.message = data.msg;
@@ -30,11 +31,10 @@ login.controller('loginCtrl', function loginCtrl($scope, $http, $timeout, $locat
 		$scope.formData.email = '';
 	}
 });
+
 login.controller('dashboardCtrl', function dashboardCtrl($scope, $window, $localStorage, $sessionStorage) {
-    alert($sessionStorage.SessionMessage);
-    $scope.name = $sessionStorage.SessionMessage;
-    $scope.logout = function () {
-    	$sessionStorage.$reset();
-    	$window.location.href = '/login';
+    $scope.Get = function () {
+        $window.alert($sessionStorage.SessionMessage);
+        $window.$sessionStorage.clear();
     }
 });

@@ -8,12 +8,23 @@
 
 	<!--  Angular from Google CDN -->
 	<script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/ngstorage/0.3.6/ngStorage.min.js"></script>
     <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-cookies.js"></script>
 	<!-- Load AppController -->
 	<script type="text/javascript" src="../controllers/login-controller.js"></script>
+	<script type="text/javascript" src="../controllers/dashboard-controller.js"></script>
 </head>
-<body ng-controller="dashboardCtrl" data-ng-init="init()">
-<h2>{{name}}</h2>
+<body ng-controller="dashboardCtrl">
+    <div class="container">
+	  <h2 style="color: #fff">Welcome {{name}}</h2>
+	  <div class="panel panel-default">
+	    <div class="panel-heading">
+	    	<button type="button" class="btn" id="createNote">Create Note</button>
+	    	<button type="button" class="btn" id="logout" ng-click="logout()">Logout</button>
+	    </div>
+	    <div class="panel-body">Here goes your notes..</div>
+	  </div>
+	</div>
 </body>
 </html>
