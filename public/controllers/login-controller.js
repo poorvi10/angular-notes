@@ -31,10 +31,3 @@ login.controller('loginCtrl', function loginCtrl($scope, $http, $timeout, $locat
 		$scope.formData.email = '';
 	}
 });
-
-login.controller('dashboardCtrl', function dashboardCtrl($scope, $window, $localStorage, $sessionStorage) {
-    $scope.Get = function () {
-        $window.alert($sessionStorage.SessionMessage);
-        $window.$sessionStorage.clear();
-    }
-});
