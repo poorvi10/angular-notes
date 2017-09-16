@@ -77,3 +77,11 @@ body {
     font-style: italic;
     font-weight: normal;
 }
+#noteContent {
+	color: #000;
+}
+.currentNote {
+	height:170px;
+	background: #80ff80;
+	margin: 10px;
+}

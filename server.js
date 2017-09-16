@@ -31,6 +31,7 @@ app.use(bodyParser.urlencoded({
 require('./app/routes/login')(app);
 require('./app/routes/register')(app);
 require('./app/routes/routes')(app);
+require('./app/routes/users')(app);
 
 // Start the app with listen and a port number
 app.listen(3000);

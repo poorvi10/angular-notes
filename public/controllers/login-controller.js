@@ -11,9 +11,8 @@ login.controller('loginCtrl', function loginCtrl($scope, $http, $timeout, $locat
 			.success(function(data) {
 				$scope.formData = {};
 				if (data.status == 200) {
-					var name = data.firstname + " " + data.lastname;
-					$sessionStorage.SessionMessage = name;
-					//$sessionStorage.put('name', name);
+					var email = data.email;
+					$sessionStorage.SessionMessage = email;
 					$window.location.href = '/dashboard';
 				} else if(data.status == 500) {
 					$scope.message = data.msg;
