@@ -1,10 +1,10 @@
 // Export the controller
-var login = angular.module('login', ['ngStorage']);
+var notes = angular.module('notes', ['ngStorage']);
 
 // Defining wrapper Routes for our API
-login.controller('loginCtrl', function loginCtrl($scope, $http, $timeout, $location, $window, $localStorage, $sessionStorage) {
+notes.controller('loginCtrl', function loginCtrl($scope, $http, $timeout, $location, $window, $localStorage, $sessionStorage) {
 	$scope.formData = {};
-	
+
     $scope.createUser = function() {
     	$scope.isCheck = false;
 		$http.post('/login', $scope.formData)
@@ -17,7 +17,7 @@ login.controller('loginCtrl', function loginCtrl($scope, $http, $timeout, $locat
 				} else if(data.status == 500) {
 					$scope.message = data.msg;
 				}
-				
+
 			})
 			.error(function(data) {
 				$scope.formData = {};

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="login">
+<html ng-app="notes">
 <head>
 	<title>Login Page</title>
 
@@ -40,9 +40,9 @@
 	                            </p>
 							</div>
 						</div>
-						
+
 						<!-- Sets the value submitted to true to help with form validation -->
-						<button type="submit" class="btn btn-lg login-button col-sm-6" ng-click="submitted=true" ng-disabled="modelCreate.password && modelCreate.password.$dirty && modelCreate.password.$invalid ||  
+						<button type="submit" class="btn btn-lg login-button col-sm-6" ng-click="submitted=true" ng-disabled="modelCreate.password && modelCreate.password.$dirty && modelCreate.password.$invalid ||
 	modelCreate.email.$dirty && modelCreate.email.$invalid && modelCreate.email">
 							Login
 						</button>
