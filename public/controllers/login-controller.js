@@ -12,7 +12,7 @@ notes.controller('loginCtrl', function loginCtrl($scope, $http, $timeout, $locat
 				$scope.formData = {};
 				if (data.status == 200) {
 					var email = data.email;
-					$sessionStorage.SessionMessage = email;
+					$sessionStorage.user_email = email;
 					$window.location.href = '/dashboard';
 				} else if(data.status == 500) {
 					$scope.message = data.msg;
