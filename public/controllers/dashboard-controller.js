@@ -1,16 +1,15 @@
 notes.controller('dashboardCtrl', function dashboardCtrl($scope, $window, $localStorage, $sessionStorage, $http) {
-    console.log($sessionStorage.user_email);
     if ($sessionStorage.user_email) {
     	
     	$http.post('/getUser', {"email": $sessionStorage.user_email})
 			.success(function(data) {
-				$scope.name = data.firstname + data.lastname;
+				$scope.name = data;
 			})
 			.error(function(data) {
-				$window.location.href = '/login';
+				$window.location.href = '/login?err=500';
 			});
     } else {
-    	$window.location.href = '/login';
+    	$window.location.href = '/login?err=401';
     }
 
     $scope.logout = function() {
@@ -18,7 +17,7 @@ notes.controller('dashboardCtrl', function dashboardCtrl($scope, $window, $local
     	$window.location.href = '/login';
     }
 
-    $scope.create = function() {
+    $scope.createNote = function() {
 
     	$http.post('/getUser', {"email": $sessionStorage.user_email})
 			.success(function(data) {

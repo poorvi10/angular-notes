@@ -4,12 +4,11 @@ module.exports = function(app) {
 
 	/* To login the user */
 	app.post('/getUser', function (req, res) {
-		console.log(req);
 		var isExists = Model.find({
 			email : req.body.email // Bound using Angular
 		}, function (err, users) {
 			if (users.length != 0) {
-					res.send({"user": user});
+					res.send({"firstname": users[0].firstname, "lastname":users[0].lastname});
 			} else {
 				res.send({"status": 500,"msg":"Please register!"});
 			}
@@ -17,8 +16,7 @@ module.exports = function(app) {
 	});
 
 	app.post('/setUser', function (req, res) {
-		console.log(req);
-		var isExists = Model.insert({
+		var insertUser = Model.insert({
 			userId : req.body.userId,
 			noteTitle : req.body.noteTitle,
 			noteBody: req.body.noteBody

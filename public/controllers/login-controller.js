@@ -1,8 +1,32 @@
 // Export the controller
 var notes = angular.module('notes', ['ngStorage']);
 
+//To obtain URL parameters
+var parseQueryString = function(url) {
+  var urlParams = {};
+  url.replace(
+    new RegExp("([^?=&]+)(=([^&]*))?", "g"),
+    function($0, $1, $2, $3) {
+      urlParams[$1] = $3;
+    }
+  );
+  
+  return urlParams;
+}
+
 // Defining wrapper Routes for our API
 notes.controller('loginCtrl', function loginCtrl($scope, $http, $timeout, $location, $window, $localStorage, $sessionStorage) {
+	console.log($location.search().err);
+	
+	var params = parseQueryString(location.search);  
+	if(params.err){
+		$scope.isCheck=true;
+		if(params.err == 500)
+			$scope.message="Internal Server Error";
+		if(params.err == 401)
+			$scope.message="Please login to continue"
+	}
+	 
 	$scope.formData = {};
 
     $scope.createUser = function() {

@@ -24,7 +24,7 @@
 		<div id="model-form" class="form-horizontal text-center">
 			<div class="row">
 			    <div class="col-md-12">
-					<p ng-show="isCheck" style="color:red;padding:5px;">{{ message }}</p>
+					<p ng-show="isCheck" style="color:red;padding:5px;" ng-bind="message"></p>
 				</div>
 				<div class="col-md-12">
 					<!-- Only posts to Angular's createModel if form is valid and was submitted -->
