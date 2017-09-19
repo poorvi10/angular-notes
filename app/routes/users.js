@@ -1,6 +1,6 @@
 module.exports = function(app) {
-	var mongoose = require('mongoose');
-	Model = require('../models/note');
+	var mongoose = require('mongoose'),
+	Model = require('../models/note')
 
 	/* To login the user */
 	app.post('/getUser', function (req, res) {

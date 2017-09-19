@@ -1,7 +1,7 @@
 // Module for API Routes (serving JSON)
 module.exports = function(app) {
-	var mongoose = require('mongoose');
-	Model = require('../models/user');
+	var mongoose = require('mongoose'),
+	Model = require('../models/user')
 
     /* Register the user */
 	app.post('/setUser', function (req, res) {
