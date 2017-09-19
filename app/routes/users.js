@@ -15,7 +15,7 @@ module.exports = function(app) {
 		});
 	});
 
-	app.post('/setUser', function (req, res) {
+	app.post('/setNote', function (req, res) {
 		var insertUser = Model.insert({
 			userId : req.body.userId,
 			noteTitle : req.body.noteTitle,

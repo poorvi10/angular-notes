@@ -5,7 +5,7 @@ register.controller('signupCtrl', function signupCtrl($scope, $http, $timeout) {
 	$scope.formData = {};
     $scope.signUp = function() {
     	$scope.isCheck = false;
-		$http.post('/register', $scope.formData)
+		$http.post('/setUser', $scope.formData)
 			.success(function(data) {
 				$scope.formData = {};
 				$scope.message = data;

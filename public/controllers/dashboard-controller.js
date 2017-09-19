@@ -20,7 +20,8 @@ notes.controller('dashboardCtrl', function dashboardCtrl($scope, $window, $http)
 
     	$http.post('/getUser', {"email": sessionStorage.user_email})
 			.success(function(data) {
-		    	$http.post('/setUser', {"userId": data._id,"noteTitle": $scope.noteHeading,"noteBody": $scope.note})
+				console.log(data);
+		    	$http.post('/setNote', {"userId": data._id,"noteTitle": $scope.noteHeading,"noteBody": $scope.note})
 					.success(function(data) {
 						var html = '<div class="col-md-3 currentNote">'+$scope.note+'</div>';
 	    				angular.element('#notes').append(html);

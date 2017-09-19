@@ -4,7 +4,7 @@ module.exports = function(app) {
 	Model = require('../models/user')
 
     /* Register the user */
-	app.post('/register', function (req, res) {
+	app.post('/setUser', function (req, res) {
 		Model.create({
 				firstname: req.body.firstname,
 				lastname: req.body.lastname,
