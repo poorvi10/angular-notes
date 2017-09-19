@@ -1,5 +1,5 @@
 // Export the controller
-var notes = angular.module('notes', ['ngStorage']);
+var notes = angular.module('notes');
 
 //To obtain URL parameters
 var parseQueryString = function(url) {
@@ -10,15 +10,13 @@ var parseQueryString = function(url) {
       urlParams[$1] = $3;
     }
   );
-  
+
   return urlParams;
 }
 
 // Defining wrapper Routes for our API
-notes.controller('loginCtrl', function loginCtrl($scope, $http, $timeout, $location, $window, $localStorage, $sessionStorage) {
-	console.log($location.search().err);
-	
-	var params = parseQueryString(location.search);  
+notes.controller('loginCtrl', function loginCtrl($scope, $http, $timeout, $location, $window) {
+	var params = parseQueryString(location.search);
 	if(params.err){
 		$scope.isCheck=true;
 		if(params.err == 500)
@@ -26,7 +24,7 @@ notes.controller('loginCtrl', function loginCtrl($scope, $http, $timeout, $locat
 		if(params.err == 401)
 			$scope.message="Please login to continue"
 	}
-	 
+
 	$scope.formData = {};
 
     $scope.createUser = function() {
@@ -36,12 +34,11 @@ notes.controller('loginCtrl', function loginCtrl($scope, $http, $timeout, $locat
 				$scope.formData = {};
 				if (data.status == 200) {
 					var email = data.email;
-					$sessionStorage.user_email = email;
-					$window.location.href = '/dashboard';
+          sessionStorage.setItem("user_email", email);
+          $window.location.href = '/dashboard';
 				} else if(data.status == 500) {
 					$scope.message = data.msg;
 				}
-
 			})
 			.error(function(data) {
 				$scope.formData = {};

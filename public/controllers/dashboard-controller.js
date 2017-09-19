@@ -1,7 +1,6 @@
-notes.controller('dashboardCtrl', function dashboardCtrl($scope, $window, $localStorage, $sessionStorage, $http) {
-    if ($sessionStorage.user_email) {
-    	
-    	$http.post('/getUser', {"email": $sessionStorage.user_email})
+notes.controller('dashboardCtrl', function dashboardCtrl($scope, $window, $http) {
+    if (sessionStorage.user_email) {
+    	$http.post('/getUser', {"email": sessionStorage.user_email})
 			.success(function(data) {
 				$scope.name = data;
 			})
@@ -13,13 +12,13 @@ notes.controller('dashboardCtrl', function dashboardCtrl($scope, $window, $local
     }
 
     $scope.logout = function() {
-    	$sessionStorage.$reset();
+    	sessionStorage.clear();
     	$window.location.href = '/login';
     }
 
     $scope.createNote = function() {
 
-    	$http.post('/getUser', {"email": $sessionStorage.user_email})
+    	$http.post('/getUser', {"email": sessionStorage.user_email})
 			.success(function(data) {
 		    	$http.post('/setUser', {"userId": data._id,"noteTitle": $scope.noteHeading,"noteBody": $scope.note})
 					.success(function(data) {
