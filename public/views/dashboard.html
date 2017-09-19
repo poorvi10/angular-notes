@@ -28,7 +28,12 @@
 	    	<button type="button" class="btn" id="createNote" data-toggle="modal" data-target="#myModal">Create Note</button>
 	    	<button type="button" class="btn" id="logout" ng-click="logout()">Logout</button>
 	    </div>
-	    <div class="panel-body" id="notes"></div>
+	    <div class="panel-body" id="notes">
+	        <div class="col-md-3 currentNote" ng-repeat="x in records">
+	        	<h1>{{x.noteTitle}}</h1>
+	        	<div class="col-md-12">{{x.noteBody}}</div>
+	        </div>	 
+	    </div>
 	  </div>
 	</div>
 	<!-- Modal -->

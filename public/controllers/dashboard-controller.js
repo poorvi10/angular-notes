@@ -1,4 +1,14 @@
 notes.controller('dashboardCtrl', function dashboardCtrl($scope, $window, $http) {
+	console.log(sessionStorage.user_email);
+	$http.post('/getNote', {"email": sessionStorage.user_email})
+		.success(function(data) {
+			$scope.records = data;
+		})
+		.error(function(data) {
+			$window.location.href = '/dashboard';
+		});
+
+    // Check for unauthorized access.
     if (sessionStorage.user_email) {
     	$http.post('/getUser', {"email": sessionStorage.user_email})
 			.success(function(data) {
@@ -26,8 +36,5 @@ notes.controller('dashboardCtrl', function dashboardCtrl($scope, $window, $http)
 			.error(function(data) {
 				$window.location.href = '/dashboard';
 			});
-
-    	var html = '<div class="col-md-3 currentNote">'+$scope.note+'</div>';
-    	angular.element('#notes').append(html);
     }
 });
