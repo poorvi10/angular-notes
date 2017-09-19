@@ -17,6 +17,7 @@ var parseQueryString = function(url) {
 // Defining wrapper Routes for our API
 notes.controller('loginCtrl', function loginCtrl($scope, $http, $timeout, $location, $window) {
 	var params = parseQueryString(location.search);
+
 	if(params.err){
 		$scope.isCheck=true;
 		if(params.err == 500)
