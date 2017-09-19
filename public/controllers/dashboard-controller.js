@@ -17,20 +17,12 @@ notes.controller('dashboardCtrl', function dashboardCtrl($scope, $window, $http)
     }
 
     $scope.createNote = function() {
-
-    	$http.post('/getUser', {"email": sessionStorage.user_email})
+    	$http.post('/setNote', {"email": sessionStorage.user_email,"noteTitle": $scope.noteHeading,"noteBody": $scope.note})
 			.success(function(data) {
-				console.log(data);
-		    	$http.post('/setNote', {"userId": data._id,"noteTitle": $scope.noteHeading,"noteBody": $scope.note})
-					.success(function(data) {
-						var html = '<div class="col-md-3 currentNote">'+$scope.note+'</div>';
-	    				angular.element('#notes').append(html);
-						$scope.name = data.firstname + data.lastname;
-					})
-					.error(function(data) {
-						$window.location.href = '/dashboard';
-					});
-				})
+				var html = '<div class="col-md-3 currentNote">'+$scope.note+'</div>';
+				angular.element('#notes').append(html);
+				$scope.name = data.firstname + data.lastname;
+			})
 			.error(function(data) {
 				$window.location.href = '/dashboard';
 			});

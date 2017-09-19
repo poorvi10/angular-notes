@@ -1,8 +1,9 @@
+var mongoose = require('mongoose');
 Schema = mongoose.Schema;
 
 // Model Schema
 var NoteSchema = new Schema ({
-	userId : {
+	email : {
         type: String
 	},
 	noteTitle : {

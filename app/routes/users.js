@@ -1,6 +1,6 @@
 module.exports = function(app) {
 	var mongoose = require('mongoose');
-	Model = require('../models/user');
+	Model = require('../models/note');
 
 	/* To login the user */
 	app.post('/getUser', function (req, res) {
@@ -16,13 +16,17 @@ module.exports = function(app) {
 	});
 
 	app.post('/setNote', function (req, res) {
-		var insertUser = Model.insert({
-			userId : req.body.userId,
-			noteTitle : req.body.noteTitle,
-			noteBody: req.body.noteBody
-
-		}, function (err, users) {
-
-		});
+		Model.create({
+				email: req.body.email,
+				noteTitle: req.body.noteTitle,
+				noteBody : req.body.noteBody
+            },
+		    function(err, model) {
+				if(err) {
+					res.send("Please try again!");
+				}
+				res.send("You are Registered!");
+	        }
+		);
 	});
 }
