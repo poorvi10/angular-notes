@@ -1,5 +1,5 @@
 // Export the controller
-var notes = angular.module('notes');
+var notes = angular.module('notes', []);
 
 //To obtain URL parameters
 var parseQueryString = function(url) {
