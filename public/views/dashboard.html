@@ -29,33 +29,45 @@
 	    	<button type="button" class="btn" id="logout" ng-click="logout()">Logout</button>
 	    </div>
 	    <div class="panel-body" id="notes">
-	        <div class="col-md-3 currentNote" ng-repeat="x in records">
-	        	<h1>{{x.noteTitle}}</h1>
-	        	<div class="col-md-12">{{x.noteBody}}</div>
+	        <div class="col-md-3 currentNote" id={{note._id}} ng-repeat="note in notes">
+	        	<div class="row">
+	        		<a class="col-md-2" id="editNotedeleteNote" ng-click="getNoteById(note._id)" data-target="#pModal">Edit</a>
+	        		<a class="col-md-2" id="deleteNote" ng-click="deleteNote(note._id)">Delete</a>
+	        	</div>
+	        	<h1>{{note.noteTitle}}</h1>
+	        	<div class="col-md-12">{{note.noteBody}}</div>
 	        </div>	 
 	    </div>
 	  </div>
 	</div>
 	<!-- Modal -->
-		  <div class="modal fade" id="myModal" role="dialog">
-		    <div class="modal-dialog modal-lg">
-		      <div class="modal-content">
-		        <div class="modal-header">
-		          <button type="button" class="close" data-dismiss="modal">&times;</button>
-		          <h4 class="modal-title">Create a new note</h4>
-		        </div>
-		        <div class="modal-body">
-		           <form>
-			           <input type="text" class="form-control" id="noteContent" placeholder="Here goes your note heading.." ng-model="noteHeading"></input><br>
-			           <textarea class="form-control" style="min-width: 100%" id="noteContent" placeholder="Here goes your note.." ng-model="note"></textarea>
-			        </form>
-		        </div>
-		        <div class="modal-footer">
-		          <button type="button" class="btn btn-primary" ng-click="createNote()">Create</button>
-		          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		        </div>
-		      </div>
-		    </div>
-		  </div>
+	<div class="modal fade" id="myModal" role="dialog">
+	    <div class="modal-dialog modal-lg">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Create a new note</h4>
+	        </div>
+	        <div class="modal-body">
+	           <form>
+	               <input type="hidden" ng-model="noteId" value="">
+		           <input type="text" class="form-control" id="noteContent" placeholder="Here goes your note heading.." ng-model="noteHeading"></input><br>
+		           <textarea class="form-control" style="min-width: 100%" id="noteContent" placeholder="Here goes your note.." ng-model="note"></textarea>
+		        </form>
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-primary" ng-show="updateNote" ng-click="updateNote()">Update</button>
+	          <button type="button" class="btn btn-primary" ng-show="createNote" ng-click="createNote()">Create</button>
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        </div>
+	      </div>
+	    </div>
+	</div>
+	<h2>Panel Footer</h2>
+    <div class="panel panel-default">
+    	<div class="panel-heading">Panel Heading</div>
+    	<div class="panel-body">Panel Content</div>
+    	<div class="panel-footer">Panel Footer</div>
+    </div>
 </body>
 </html>

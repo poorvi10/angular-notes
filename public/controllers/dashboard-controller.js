@@ -1,8 +1,10 @@
 notes.controller('dashboardCtrl', function dashboardCtrl($scope, $window, $http) {
-	console.log(sessionStorage.user_email);
+    
+    $scope.updateNote = false;
+    $scope.createNote = true;
 	$http.post('/getNote', {"email": sessionStorage.user_email})
 		.success(function(data) {
-			$scope.records = data;
+			$scope.notes = data;
 		})
 		.error(function(data) {
 			$window.location.href = '/dashboard';
@@ -29,12 +31,62 @@ notes.controller('dashboardCtrl', function dashboardCtrl($scope, $window, $http)
     $scope.createNote = function() {
     	$http.post('/setNote', {"email": sessionStorage.user_email,"noteTitle": $scope.noteHeading,"noteBody": $scope.note})
 			.success(function(data) {
-				var html = '<div class="col-md-3 currentNote">'+$scope.note+'</div>';
+				var html = '';
+				html += '<div class="col-md-3 currentNote" id= "'+data._id+'" ng-repeat="note in notes">';
+	        	html += '<div class="row">';
+	        	html += '<a class="col-md-2" id="editNotedeleteNote" ng-click="getNoteById('+data._id+')">Edit</a>';
+	        	html += '<a class="col-md-2" id="deleteNote" ng-click="deleteNote('+data._id+')">Delete</a>';
+	        	html += '</div>';
+	        	html += '<h1>'+$scope.noteHeading+'</h1>';
+	        	html += '<div class="col-md-12">'+$scope.note+'</div>';
 				angular.element('#notes').append(html);
 				$scope.name = data.firstname + data.lastname;
+				$('#myModal').modal('hide');
 			})
 			.error(function(data) {
 				$window.location.href = '/dashboard';
 			});
     }
+
+    $scope.deleteNote = function(noteId) {
+    	$http.post('/deleteNote', {"id": noteId})
+			.success(function(data) {
+				if (data == "Success") {
+					angular.element('#'+noteId).remove();
+				}
+			})
+			.error(function(data) {
+				$window.location.href = '/dashboard';
+			});
+    }
+
+    $scope.getNoteById = function(noteId) {
+    	$scope.updateNote = true;
+    	$scope.createNote = false;
+    	$http.post('/getNoteById', {"noteId": noteId})
+		.success(function(data) {
+			$scope.noteId = data[0]._id;
+			$scope.noteHeading = data[0].noteTitle;
+			$scope.note = data[0].noteBody;
+			$('#myModal').modal();
+		})
+		.error(function(data) {
+			alert("Cannot be edited");
+		});
+    }
+
+    $scope.updateNote = function() {
+    	$http.post('/updateNote', {"noteId": $scope.noteId, "noteTitle": $scope.noteHeading,"noteBody": $scope.note})
+		.success(function(data) {
+			$('#myModal').modal('hide');
+			$scope.updateNote = true;
+    		$scope.createNote = false;
+		})
+		.error(function(data) {
+			alert("Cannot be updated");
+			$scope.updateNote = true;
+    		$scope.createNote = false;
+		});
+    }
+
 });
