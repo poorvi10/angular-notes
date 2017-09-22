@@ -1,6 +1,6 @@
 notes.controller('dashboardCtrl', function dashboardCtrl($scope, $window, $http) {
     
-    $scope.updateNote = false;
+    $scope.editNote = false;
     $scope.createNote = true;
 	$http.post('/getNote', {"email": sessionStorage.user_email})
 		.success(function(data) {
@@ -38,7 +38,7 @@ notes.controller('dashboardCtrl', function dashboardCtrl($scope, $window, $http)
 	        	html += '<a class="col-md-2" id="deleteNote" ng-click="deleteNote('+data._id+')">Delete</a>';
 	        	html += '</div>';
 	        	html += '<h1>'+$scope.noteHeading+'</h1>';
-	        	html += '<div class="col-md-12">'+$scope.note+'</div>';
+	        	html += '<div class="col-md-12" id="noteBody">'+$scope.note+'</div>';
 				angular.element('#notes').append(html);
 				$scope.name = data.firstname + data.lastname;
 				$('#myModal').modal('hide');
@@ -61,7 +61,7 @@ notes.controller('dashboardCtrl', function dashboardCtrl($scope, $window, $http)
     }
 
     $scope.getNoteById = function(noteId) {
-    	$scope.updateNote = true;
+    	$scope.editNote = true;
     	$scope.createNote = false;
     	$http.post('/getNoteById', {"noteId": noteId})
 		.success(function(data) {
@@ -79,14 +79,15 @@ notes.controller('dashboardCtrl', function dashboardCtrl($scope, $window, $http)
     	$http.post('/updateNote', {"noteId": $scope.noteId, "noteTitle": $scope.noteHeading,"noteBody": $scope.note})
 		.success(function(data) {
 			$('#myModal').modal('hide');
-			$scope.updateNote = true;
+    		angular.element('#'+$scope.noteId).children('h1').html($scope.noteHeading);
+    		angular.element('#'+$scope.noteId).children('#noteBody').html($scope.note);
+			$scope.editNote = true;
     		$scope.createNote = false;
 		})
 		.error(function(data) {
 			alert("Cannot be updated");
-			$scope.updateNote = true;
+			$scope.editNote = true;
     		$scope.createNote = false;
 		});
     }
-
 });
