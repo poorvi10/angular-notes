@@ -40,7 +40,6 @@ notes.controller('dashboardCtrl', function dashboardCtrl($scope, $window, $http)
 	        	html += '<h1>'+$scope.noteHeading+'</h1>';
 	        	html += '<div class="col-md-12" id="noteBody">'+$scope.note+'</div>';
 				angular.element('#notes').append(html);
-				$scope.name = data.firstname + data.lastname;
 				$('#myModal').modal('hide');
 			})
 			.error(function(data) {
