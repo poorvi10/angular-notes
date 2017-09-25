@@ -32,7 +32,7 @@
 	    <div class="panel-body" id="notes">
 	        <div class="col-md-3 currentNote" id={{note._id}} ng-repeat="note in notes">
 	        	<div class="row">
-	        		<a class="col-md-offset-8 col-md-2" id="editNote" ng-click="getNoteById(note._id)" data-target="#pModal"><i class="fa fa-pencil"></i></a>
+	        		<a class="col-md-offset-8 col-md-2" id="editNote" ng-click="getNoteById(note._id)" data-target="#myModal"><i class="fa fa-pencil"></i></a>
 	        		<a class="col-md-2" id="deleteNote" ng-click="deleteNote(note._id)"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
 	        	</div>
 	        	<h1 ng-bind="note.noteTitle"></h1>
