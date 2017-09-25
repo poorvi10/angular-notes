@@ -1,7 +1,7 @@
 notes.controller('dashboardCtrl', function dashboardCtrl($scope, $window, $http) {
     
     $scope.editNote = false;
-    $scope.createNote = true;
+    $scope.saveNote = true;
 	$http.post('/getNote', {"email": sessionStorage.user_email})
 		.success(function(data) {
 			$scope.notes = data;
@@ -62,7 +62,7 @@ notes.controller('dashboardCtrl', function dashboardCtrl($scope, $window, $http)
 
     $scope.getNoteById = function(noteId) {
     	$scope.editNote = true;
-    	$scope.createNote = false;
+    	$scope.saveNote = false;
     	$http.post('/getNoteById', {"noteId": noteId})
 		.success(function(data) {
 			$scope.noteId = data[0]._id;
@@ -82,12 +82,19 @@ notes.controller('dashboardCtrl', function dashboardCtrl($scope, $window, $http)
     		angular.element('#'+$scope.noteId).children('h1').html($scope.noteHeading);
     		angular.element('#'+$scope.noteId).children('#noteBody').html($scope.note);
 			$scope.editNote = true;
-    		$scope.createNote = false;
+    		$scope.saveNote = false;
 		})
 		.error(function(data) {
 			alert("Cannot be updated");
 			$scope.editNote = true;
-    		$scope.createNote = false;
+    		$scope.saveNote = false;
 		});
+    }
+
+    $scope.initializeModal = function() {
+		$scope.noteHeading = '';
+		$scope.note = '';
+		$scope.editNote = false;
+		$scope.saveNote = true;
     }
 });

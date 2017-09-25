@@ -25,13 +25,13 @@
 	  <h2 style="color: #fff">Welcome <span ng-bind="name.firstname"></span>!</h2>
 	  <div class="panel panel-default">
 	    <div class="panel-heading">
-	    	<button type="button" class="btn" id="createNote" data-toggle="modal" data-target="#myModal">Create Note</button>
+	    	<button type="button" class="btn" id="createNote" ng-click="initializeModal()" data-toggle="modal" data-target="#myModal">Create Note</button>
 	    	<button type="button" class="btn" id="logout" ng-click="logout()">Logout</button>
 	    </div>
 	    <div class="panel-body" id="notes">
 	        <div class="col-md-3 currentNote" id={{note._id}} ng-repeat="note in notes">
 	        	<div class="row">
-	        		<a class="col-md-2" id="editNotedeleteNote" ng-click="getNoteById(note._id)" data-target="#myModal">Edit</a>
+	        		<a class="col-md-2" id="editNote" ng-click="getNoteById(note._id)" data-target="#pModal">Edit</a>
 	        		<a class="col-md-2" id="deleteNote" ng-click="deleteNote(note._id)">Delete</a>
 	        	</div>
 	        	<h1>{{note.noteTitle}}</h1>
@@ -57,7 +57,7 @@
 	        </div>
 	        <div class="modal-footer">
 	          <button type="button" class="btn btn-primary" ng-show="editNote" ng-click="updateNote()">Update</button>
-	          <button type="button" class="btn btn-primary" ng-show="createNote" ng-click="createNote()">Create</button>
+	          <button type="button" class="btn btn-primary" ng-show="saveNote" ng-click="createNote()">Create</button>
 	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	        </div>
 	      </div>
