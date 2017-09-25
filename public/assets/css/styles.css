@@ -27,6 +27,7 @@ a, a label {
 	background-image:url('images/bg1.jpg');
 	background-size: 1300px 960px;
     background-repeat: no-repeat;
+    overflow: scroll;
 }
 
 /* Login form and signup form styles */
@@ -89,9 +90,21 @@ a, a label {
 #noteContent {
 	color: #000;
 }
+#notes {
+	overflow: hidden;
+}
 
 .currentNote {
 	height:170px;
-	background: #80ff80;
+	background: #000;
 	margin: 10px;
+	word-wrap: break-word;
+	overflow: auto;
+	border-radius: 17px;
+	color: gray;
+}
+#editNote, #deleteNote {
+	text-decoration: none;
+	color: green;
+	padding-top: 4px;
 }

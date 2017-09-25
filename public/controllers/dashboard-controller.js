@@ -34,8 +34,8 @@ notes.controller('dashboardCtrl', function dashboardCtrl($scope, $window, $http)
 				var html = '';
 				html += '<div class="col-md-3 currentNote" id= "'+data._id+'" ng-repeat="note in notes">';
 	        	html += '<div class="row">';
-	        	html += '<a class="col-md-2" id="editNotedeleteNote" ng-click="getNoteById('+data._id+')">Edit</a>';
-	        	html += '<a class="col-md-2" id="deleteNote" ng-click="deleteNote('+data._id+')">Delete</a>';
+	        	html += '<a class="col-md-2" id="editNotedeleteNote" ng-click="getNoteById('+data._id+')"><i class="fa fa-pencil"></i></a>';
+	        	html += '<a class="col-md-2" id="deleteNote" ng-click="deleteNote('+data._id+')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>';
 	        	html += '</div>';
 	        	html += '<h1>'+$scope.noteHeading+'</h1>';
 	        	html += '<div class="col-md-12" id="noteBody">'+$scope.note+'</div>';
